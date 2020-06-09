@@ -33,6 +33,9 @@ echo "screenfetch" >> /etc/skel/.bashrc
 wget https://github.com/rhendges/linux-scripts/raw/master/xfce4.zip
 unzip xfce4.zip
 rm xfce4.zip
+wget https://github.com/rhendges/linux-scripts/raw/master/.gtkrc-2.0
+cp .gtkrc-2.0 ~/
+cp .gtkrc-2.0 /etc/skel
 
 #Define os temas
 cp -r panel/ ~/.config/xfce4
