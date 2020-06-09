@@ -3,6 +3,12 @@
 #Script de personalização inicial da minha distro Debian
 #Executar como sudo
 
+#Seleciona o mirror mais rápido para o apt
+sudo apt install -y netselect-apt
+sudo netselect-apt -c brazil -t 6 -a amd64 -n stable
+mv sources.list /etc/apt/sources.list
+
+#atualiza o apt e instala pacotes necessários
 apt update -y
 apt install -y wget git gcc python3 screenfetch software-properties-common
 
