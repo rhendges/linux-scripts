@@ -9,8 +9,13 @@ apt install -y wget git gcc python3 screenfetch software-properties-common
 ###Criar if para escolha se já possui interface grafica instalada
 #apt install -y xorg xfce4 xfce4-goodies lightdm
 
-mkdir -p ~/.themes
+#instala pacote mugshot faltante
 cd /tmp
+wget http://ftp.br.debian.org/debian/pool/main/m/mugshot/mugshot_0.4.2-1_all.deb
+dpkg -i mugshot_0.4.2-1_all.deb
+
+#Baixa e instala temas
+mkdir -p ~/.themes
 wget https://github.com/rhendges/linux-scripts/raw/master/flat-remix-blue.xz
 tar -xvf flat-remix-blue.xz
 cp -r Flat-Remix-Blue/ ~/.icons/
@@ -28,6 +33,8 @@ echo "screenfetch" >> /etc/skel/.bashrc
 wget https://github.com/rhendges/linux-scripts/raw/master/xfce4.zip
 unzip xfce4.zip
 rm xfce4.zip
+
+#Define os temas
 cp -r panel/ ~/.config/xfce4
 cp -r terminal/ ~/.config/xfce4
 cp -r xfconf/ ~/.config/xfce4
