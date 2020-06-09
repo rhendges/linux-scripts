@@ -9,3 +9,8 @@ apt install -y wget git gcc python3 screenfetch software-properties-common
 
 mkdir -p ~/.themes
 cd /tmp
+wget https://github.com/rhendges/linux-scripts/raw/master/flat-remix-blue.xz
+tar -xvf flat-remix-blue.xz
+cp -r Flat-Remix-Blue/ ~/.icons/
+rm -rf Flat-Remix-Blue/
+
