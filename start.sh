@@ -2,6 +2,11 @@
 #Script de personalização inicial da minha distro Debian
 #Trabalho em andamento... noob noob noob
 
+#Instala netselect para otimizar mirrors apt
+sudo apt install netselect-apt
+sudo netselect-apt -c Brazil -t 6 -a amd64 -n stable
+sudo mv sources.list /etc/apt/sources.list
+
 #Instala dependências e ferramentas
 sudo apt update -y
 sudo apt install -y wget git gcc vim ruby golang python3 screenfetch software-properties-common qterminal firefox-esr
@@ -52,7 +57,12 @@ sudo cp -r panel/ /etc/skel/.config/xfce4/
 sudo cp -r terminal/ /etc/skel/.config/xfce4/
 sudo cp -r xfconf/ /etc/skel/.config/xfce4/
 
+#Inicializa screenfetch no .bashrc
+if grep -q screenfetch ~/.bashrc; then
+echo "screenfetch" >> /home/$USER/.bashrc
+fi
 
-#echo "screenfetch" >> /home/$USER/.bashrc
-#sudo echo "screenfetch" >> /etc/skel/.bashrc
+if grep -q screenfetch /etc/skel/.bashrc; then
+sudo echo "screenfetch" >> /etc/skel/.bashrc
+fi
 
