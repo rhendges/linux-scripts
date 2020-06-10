@@ -36,9 +36,9 @@ sudo cp -r NumixHolo/ /usr/share/themes/
 rm -rf NumixHolo/
 rm NumixHolo.zip
 
-wget https://github.com/rhendges/linux-scripts/raw/master/xfce4.zip
-unzip -qq -o xfce4.zip
-rm xfce4.zip
+wget https://github.com/rhendges/linux-scripts/raw/master/config.zip
+unzip -qq -o config.zip
+rm config.zip
 
 wget https://github.com/rhendges/linux-scripts/raw/master/.gtkrc-2.0
 cp .gtkrc-2.0 /home/$USER/
@@ -46,9 +46,9 @@ sudo cp .gtkrc-2.0 /etc/skel/
 
 #Define os temas
 mkdir /home/$USER/.config
-cp -r panel/ /home/$USER/.config/xfce4/
-cp -r terminal/ /home/$USER/.config/xfce4/
-cp -r xfconf/ /home/$USER/.config/xfce4/
+cp -r xfce4/ /home/$USER/.config/
+cp -r dconf/ /home/$USER/.config/
+cp -r qterminal.org/ /home/$USER/.config/
 
 #copia templates do usuário para /etc/skel
 sudo mkdir /etc/skel/.config
