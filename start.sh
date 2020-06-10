@@ -13,7 +13,7 @@ sudo apt install -y wget git gcc vim ruby golang python3 screenfetch software-pr
 sudo apt install -y accountsservice gir1.2-atk-1.0 gir1.2-freedesktop gir1.2-gdkpixbuf-2.0 gir1.2-gst-plugins-base-1.0 gir1.2-gstreamer-1.0 gir1.2-gtk-3.0 gir1.2-pango-1.0 gstreamer1.0-gl libaccountsservice0 libgraphene-1.0-0 libgstreamer-gl1.0-0 libpangoxft-1.0-0 python3-cairo python3-pexpect python3-ptyprocess
 
 ###Criar if para escolha se já possui interface grafica instalada
-#apt install -y xorg xfce4 xfce4-goodies lightdm
+#sudo apt install -y xorg xfce4 xfce4-goodies lightdm
 
 #Instala pacote mugshot faltante
 cd /tmp
@@ -52,17 +52,19 @@ cp -r qterminal.org/ /home/$USER/.config/
 
 #copia templates do usuário para /etc/skel
 sudo mkdir /etc/skel/.config
-sudo mkdir /etc/skel/.config/xfce4
-sudo cp -r panel/ /etc/skel/.config/xfce4/
-sudo cp -r terminal/ /etc/skel/.config/xfce4/
-sudo cp -r xfconf/ /etc/skel/.config/xfce4/
+sudo cp -r dconf/ /etc/skel/.config/
+sudo cp -r qterminal.org/ /etc/skel/.config/
+sudo cp -r xfce4/ /etc/skel/.config/
 
 #Inicializa screenfetch no .bashrc
 if grep -q screenfetch ~/.bashrc; then
+echo "Já"
+else
 echo "screenfetch" >> /home/$USER/.bashrc
 fi
 
 if grep -q screenfetch /etc/skel/.bashrc; then
+echo "Já"
+else
 sudo echo "screenfetch" >> /etc/skel/.bashrc
 fi
-
