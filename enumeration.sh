@@ -1,6 +1,6 @@
 #!/bin/bash
 #Script para automatizar enumeração com nmap
-
+#Utilização: ./enumeration.sh <IP>
 end_ip=$1
 nom_ip=$(echo $end_ip | tr '/' _)
 nports=$(nmap -p- --open -T4 $end_ip | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
