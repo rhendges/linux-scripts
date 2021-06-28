@@ -45,7 +45,8 @@ cp .gtkrc-2.0 /home/$USER/
 sudo cp .gtkrc-2.0 /etc/skel/
 
 wget https://github.com/rhendges/linux-scripts/raw/master/Kali-Dark.colorscheme
-sudo mv Kali-Dark.colorscheme /usr/share/qtermwidget5/color-schemes
+wget https://github.com/rhendges/linux-scripts/raw/master/Kali-Light.colorscheme
+sudo mv *.colorscheme /usr/share/qtermwidget5/color-schemes
 
 #Define os temas
 mkdir /home/$USER/.config
