@@ -12,8 +12,12 @@ sudo apt update -y
 sudo apt install -y wget git gcc vim ruby golang python3 python3-venv python3-pip screenfetch software-properties-common qterminal firefox-esr xrdp lolcat adwaita-qt remmina rdesktop nmap
 sudo apt install -y accountsservice gir1.2-atk-1.0 gir1.2-freedesktop gir1.2-gdkpixbuf-2.0 gir1.2-gst-plugins-base-1.0 gir1.2-gstreamer-1.0 gir1.2-gtk-3.0 gir1.2-pango-1.0 gstreamer1.0-gl libaccountsservice0 libgraphene-1.0-0 libgstreamer-gl1.0-0 libpangoxft-1.0-0 python3-cairo python3-pexpect python3-ptyprocess build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
 
-###Criar if para escolha se já possui interface grafica instalada
-#sudo apt install -y xorg xfce4 xfce4-goodies lightdm
+#Instala interface grafica com xfce4
+if dpkg -l | grep xserver-xorg-core > /dev/null ; then
+echo "Xorg instalado!"
+else
+sudo apt install -y xorg xfce4 xfce4-goodies lightdm
+fi
 
 #Instala pacote mugshot faltante
 cd /tmp
@@ -92,7 +96,7 @@ else
 sudo echo "alias python=python3.8" >> /etc/skel/.bashrc
 fi
 
-#Instala ferramentas Úuteis
+#Instala ferramentas uteis
 sudo apt install python3-pip
 python3 -m pip install pipx
 python3 -m pipx ensurepath
