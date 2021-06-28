@@ -9,8 +9,8 @@ sudo mv sources.list /etc/apt/sources.list
 
 #Instala dependências e ferramentas
 sudo apt update -y
-sudo apt install -y wget git gcc vim ruby golang python3 screenfetch software-properties-common qterminal firefox-esr xrdp
-sudo apt install -y accountsservice gir1.2-atk-1.0 gir1.2-freedesktop gir1.2-gdkpixbuf-2.0 gir1.2-gst-plugins-base-1.0 gir1.2-gstreamer-1.0 gir1.2-gtk-3.0 gir1.2-pango-1.0 gstreamer1.0-gl libaccountsservice0 libgraphene-1.0-0 libgstreamer-gl1.0-0 libpangoxft-1.0-0 python3-cairo python3-pexpect python3-ptyprocess
+sudo apt install -y wget git gcc vim ruby golang python3 python3-venv python3-pip screenfetch software-properties-common qterminal firefox-esr xrdp lolcat adwaita-qt remmina rdesktop nmap
+sudo apt install -y accountsservice gir1.2-atk-1.0 gir1.2-freedesktop gir1.2-gdkpixbuf-2.0 gir1.2-gst-plugins-base-1.0 gir1.2-gstreamer-1.0 gir1.2-gtk-3.0 gir1.2-pango-1.0 gstreamer1.0-gl libaccountsservice0 libgraphene-1.0-0 libgstreamer-gl1.0-0 libpangoxft-1.0-0 python3-cairo python3-pexpect python3-ptyprocess build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
 
 ###Criar if para escolha se já possui interface grafica instalada
 #sudo apt install -y xorg xfce4 xfce4-goodies lightdm
@@ -44,6 +44,9 @@ wget https://github.com/rhendges/linux-scripts/raw/master/.gtkrc-2.0
 cp .gtkrc-2.0 /home/$USER/
 sudo cp .gtkrc-2.0 /etc/skel/
 
+wget https://github.com/rhendges/linux-scripts/raw/master/Kali-Dark.colorscheme
+sudo mv Kali-Dark.colorscheme /usr/share/qtermwidget5/color-schemes
+
 #Define os temas
 mkdir /home/$USER/.config
 cp -r xfce4/ /home/$USER/.config/
@@ -60,11 +63,38 @@ sudo cp -r xfce4/ /etc/skel/.config/
 if grep -q screenfetch ~/.bashrc; then
 echo "Já"
 else
-echo "screenfetch" >> /home/$USER/.bashrc
+echo "screenfetch|lolcat" >> /home/$USER/.bashrc
 fi
 
 if grep -q screenfetch /etc/skel/.bashrc; then
 echo "Já"
 else
-sudo echo "screenfetch" >> /etc/skel/.bashrc
+sudo echo "screenfetch|lolcat" >> /etc/skel/.bashrc
 fi
+
+#Baixa e instala python 3.8
+cd /opt
+sudo wget https://www.python.org/ftp/python/3.8.7/Python-3.8.7.tgz
+sudo tar -xvf Python-3.8.7.tgz
+cd Python-3.8.7/
+sudo ./configure --enable-optimizations
+sudo make altinstall
+alias python=python3.8
+if grep -q python=python3.8 ~/.bashrc; then
+echo "Já"
+else
+echo "alias python=python3.8" >> /home/$USER/.bashrc
+fi
+if grep -q python=python3.8 /etc/skel/.bashrc; then
+echo "Já"
+else
+sudo echo "alias python=python3.8" >> /etc/skel/.bashrc
+fi
+
+#Instala ferramentas Úuteis
+sudo apt install python3-pip
+python3 -m pip install pipx
+python3 -m pipx ensurepath
+export PATH=$PATH:/home/$USER/.local/bin
+python3 -m pipx install crackmapexec
+python -m pip install git+https://github.com/calebstewart/pwncat.git
