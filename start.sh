@@ -23,9 +23,8 @@ fi
 
 #Instala pacote mugshot faltante
 cd /tmp
-#sudo add-apt-repository 'deb http://deb.debian.org/debian unstable main'
-#sudo apt update
-#sudo apt install -y mugshot
+wget https://github.com/rhendges/linux-scripts/raw/master/mugshot_0.4.3-1_all.deb
+sudo dpkg -i mugshot_0.4.3-1_all.deb
 
 #Baixa e instala temas
 #mkdir -p /home/$USER/.themes
@@ -100,13 +99,9 @@ sudo bash -c 'echo "alias python=python3.8" >> /etc/skel/.bashrc'
 fi
 
 #Instala ferramentas uteis
-alias python=python3.8
 sudo apt install python3-pip
-
 python3 -m pip install pipx
 python3 -m pipx ensurepath
-
 export PATH=$PATH:/home/$USER/.local/bin
 python3 -m pipx install crackmapexec
-
 python3 -m pip install git+https://github.com/calebstewart/pwncat.git
