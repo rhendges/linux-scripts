@@ -30,6 +30,12 @@ fi
 echo "Pressione <ENTER> para continuar..."
 read
 
+sudo systemctl enable graphical.target --force
+sudo systemctl set-default graphical.target
+
+echo "Pressione <ENTER> para continuar..."
+read
+
 #Instala pacote mugshot faltante
 cd /tmp
 sudo add-apt-repository 'deb http://deb.debian.org/debian unstable main'
